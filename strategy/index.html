@@ -3,8 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>交易策略代写服务 · AI Hearts</title>
-    <meta name="description" content="专业交易策略代写：覆盖中国大陆股票期货软件、香港老虎/富途/长桥/盈透、数字货币交易所及国际平台。">
+
+    <!-- SEO 基础 -->
+    <title>交易策略代写服务_通达信文华财经老虎富途币安 - AI Hearts</title>
+    <meta name="description" content="专业交易策略代写：覆盖通达信、同花顺、大智慧、东方财富、文华财经、TB、金字塔、QMT、PTrade、老虎证券、富途牛牛、长桥、盈透IB、币安、OKX、Bybit、TradingView、MetaTrader 等 20+ 平台，¥200 起。">
+    <meta name="keywords" content="交易策略代写,股票策略代写,期货策略代写,数字货币策略代写,通达信代写,文华财经代写,老虎证券API,富途OpenAPI,量化策略编写">
+    <link rel="canonical" href="https://www.aihearts.cn/strategy/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="交易策略代写服务 - 覆盖 20+ 主流平台 - AI Hearts">
+    <meta property="og:description" content="股票、期货、数字货币策略代写。通达信、文华财经、老虎、富途、长桥、盈透、币安、OKX、TradingView 等平台，¥200 起。">
+    <meta property="og:url" content="https://www.aihearts.cn/strategy/">
+    <meta property="og:site_name" content="AI Hearts">
+    <meta property="og:image" content="https://www.aihearts.cn/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="交易策略代写服务 - AI Hearts">
+    <meta name="twitter:description" content="股票、期货、数字货币策略代写，覆盖 20+ 主流平台。">
+
+    <!-- 结构化数据：BreadcrumbList + ItemList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://www.aihearts.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "策略代写",
+          "item": "https://www.aihearts.cn/strategy/"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "交易策略代写服务",
+      "description": "覆盖股票、期货、数字货币三大类交易平台的策略代写服务",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "通达信策略代写", "url": "https://www.aihearts.cn/strategy/tongdaxin.html"},
+        {"@type": "ListItem", "position": 2, "name": "同花顺策略代写", "url": "https://www.aihearts.cn/strategy/tonghuashun.html"},
+        {"@type": "ListItem", "position": 3, "name": "文华财经策略代写", "url": "https://www.aihearts.cn/strategy/wenhuacai.html"},
+        {"@type": "ListItem", "position": 4, "name": "交易开拓者TB策略代写", "url": "https://www.aihearts.cn/strategy/tb.html"},
+        {"@type": "ListItem", "position": 5, "name": "老虎证券策略代写", "url": "https://www.aihearts.cn/strategy/tiger.html"},
+        {"@type": "ListItem", "position": 6, "name": "富途牛牛策略代写", "url": "https://www.aihearts.cn/strategy/futu.html"},
+        {"@type": "ListItem", "position": 7, "name": "盈透证券IB策略代写", "url": "https://www.aihearts.cn/strategy/ib.html"},
+        {"@type": "ListItem", "position": 8, "name": "币安策略代写", "url": "https://www.aihearts.cn/strategy/binance.html"},
+        {"@type": "ListItem", "position": 9, "name": "OKX策略代写", "url": "https://www.aihearts.cn/strategy/okx.html"},
+        {"@type": "ListItem", "position": 10, "name": "TradingView策略代写", "url": "https://www.aihearts.cn/strategy/tradingview.html"}
+      ]
+    }
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -187,7 +245,6 @@
             transform: translateX(0);
         }
 
-        /* 卡片图标区（代替商品图） */
         .card-icon {
             width: 72px;
             height: 72px;
@@ -619,7 +676,8 @@
                 <a href="../index.html">首页</a> · 
                 <a href="../weather.html">天气系统</a> · 
                 <a href="index.html">策略代写</a> · 
-                <a href="https://t.me/aihearts" target="_blank" rel="noopener">Telegram</a>
+                <a href="https://t.me/ai_hearts" target="_blank" rel="noopener">Telegram</a> · 
+                <span>微信: xinli93</span>
             </p>
         </div>
     </footer>
@@ -633,7 +691,6 @@
 
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    // 切换按钮激活状态
                     filterBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
 
@@ -650,7 +707,6 @@
                         }
                     });
 
-                    // 显示/隐藏无结果提示
                     noResult.style.display = visibleCount === 0 ? 'block' : 'none';
                 });
             });

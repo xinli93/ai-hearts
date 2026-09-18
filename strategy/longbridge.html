@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- SEO 基础 -->
+    <title>长桥证券策略定制开发 · Longbridge OpenAPI/港美股量化 · AI Hearts</title>
+    <meta name="description" content="长桥证券策略定制开发：Longbridge OpenAPI、港美股量化策略、条件单、自动下单、行情监控，支持股票、期权。¥99 起。">
+    <meta name="keywords" content="长桥证券定制开发,Longbridge OpenAPI,长桥策略代写,港美股量化,长桥自动交易">
+    <link rel="canonical" href="https://www.aihearts.cn/strategy/longbridge.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="长桥证券策略定制开发 · Longbridge OpenAPI · AI Hearts">
+    <meta property="og:description" content="Longbridge OpenAPI、港美股量化策略、条件单、自动下单、行情监控。">
+    <meta property="og:url" content="https://www.aihearts.cn/strategy/longbridge.html">
+    <meta property="og:site_name" content="AI Hearts">
+    <meta property="og:image" content="https://www.aihearts.cn/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="长桥证券策略定制开发 - AI Hearts">
+    <meta name="twitter:description" content="Longbridge OpenAPI、港美股量化策略、条件单、自动下单。">
+
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "长桥证券策略定制开发",
+      "provider": {
+        "@type": "Organization",
+        "name": "AI Hearts",
+        "url": "https://www.aihearts.cn"
+      },
+      "areaServed": "Worldwide",
+      "description": "Longbridge OpenAPI、港美股量化策略、条件单、自动下单、行情监控",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "CNY",
+        "price": "99",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": "99",
+          "priceCurrency": "CNY"
+        }
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "需要开通 Longbridge OpenAPI 权限吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "需要。长桥证券账户可以申请 Longbridge OpenAPI 权限，具体门槛和费用以官方为准。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "支持美股期权吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "支持。Longbridge OpenAPI 提供港股、美股及期权的行情和交易接口。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "能对接实盘自动交易吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以。策略编写完成后可以挂载到服务器上，实现自动交易。"
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "首页", "item": "https://www.aihearts.cn/"},
+        {"@type": "ListItem", "position": 2, "name": "策略定制开发", "item": "https://www.aihearts.cn/strategy/"},
+        {"@type": "ListItem", "position": 3, "name": "长桥证券"}
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f8fafc;
+            color: #0b1e33;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 12px rgba(0, 20, 30, 0.04);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+            color: #0b2d4b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo span { color: #1e6f9f; }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #1e6f9f; }
+        .nav-links a.active { color: #1e6f9f; font-weight: 600; }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: #7a94ab;
+            padding: 32px 0 0;
+        }
+
+        .breadcrumb a {
+            color: #1e6f9f;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        .detail-header {
+            padding: 32px 0 40px;
+            border-bottom: 1px solid #e1eef9;
+        }
+
+        .detail-header-top {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .platform-icon {
+            width: 80px;
+            height: 80px;
+            background: #e2f0f9;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e6f9f;
+            flex-shrink: 0;
+        }
+
+        .platform-icon svg {
+            width: 42px;
+            height: 42px;
+        }
+
+        .detail-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #0b1e33;
+            margin-bottom: 8px;
+        }
+
+        .category-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .category-tag {
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 100px;
+            letter-spacing: 0.2px;
+        }
+
+        .tag-stock { background: #e2f0f9; color: #1e6f9f; }
+
+        .detail-header p {
+            font-size: 1.1rem;
+            color: #4b637a;
+            max-width: 720px;
+        }
+
+        .content-section {
+            padding: 44px 0;
+            border-bottom: 1px solid #eef4f9;
+        }
+
+        .content-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .content-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 20px;
+            color: #0b1e33;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-section h2 svg {
+            color: #1e6f9f;
+            flex-shrink: 0;
+        }
+
+        .content-section p {
+            color: #3d5a73;
+            margin-bottom: 14px;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px 32px;
+            margin-top: 8px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 1rem;
+            color: #1e3b53;
+        }
+
+        .feature-list li svg {
+            flex-shrink: 0;
+            margin-top: 4px;
+            color: #1e6f9f;
+        }
+
+        .deliverable-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .deliverable-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 20px;
+            background: #fafdff;
+            border: 1px solid #e8f0f7;
+            border-radius: 14px;
+            font-size: 0.98rem;
+            color: #1e3b53;
+        }
+
+        .deliverable-list li svg {
+            flex-shrink: 0;
+            margin-top: 3px;
+            color: #1e6f9f;
+        }
+
+        .deliverable-list li strong {
+            color: #0b2d4b;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .info-card {
+            background: #fafdff;
+            border: 1px solid #e8f0f7;
+            border-radius: 16px;
+            padding: 22px 20px;
+            text-align: center;
+        }
+
+        .info-card .info-label {
+            font-size: 0.85rem;
+            color: #7a94ab;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .info-card .info-value {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0b2d4b;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eef4f9;
+            padding: 18px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h4 {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: #0b1e33;
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+            color: #5b748b;
+            margin: 0;
+        }
+
+        .detail-cta {
+            background: linear-gradient(135deg, #0b2d4b 0%, #1a4b6e 100%);
+            border-radius: 28px;
+            padding: 44px 40px;
+            text-align: center;
+            color: white;
+            margin: 56px 0 24px;
+        }
+
+        .detail-cta h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .detail-cta > p {
+            opacity: 0.85;
+            margin-bottom: 32px;
+            font-size: 1.02rem;
+        }
+
+        .cta-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: left;
+            max-width: 620px;
+            margin: 0 auto 32px;
+        }
+
+        .cta-contact-block {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 20px 22px;
+        }
+
+        .cta-contact-block h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.95;
+        }
+
+        .cta-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .cta-contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .cta-contact-label {
+            opacity: 0.6;
+            font-size: 0.85rem;
+            min-width: 70px;
+        }
+
+        .cta-contact-item a {
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+            word-break: break-all;
+        }
+
+        .cta-contact-item a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .cta-contact-item span:not(.cta-contact-label) {
+            opacity: 0.9;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: #0b2d4b;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #f0f7ff;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.5);
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            color: white;
+        }
+
+        .back-link {
+            text-align: center;
+            padding: 8px 0 40px;
+        }
+
+        .back-link a {
+            color: #1e6f9f;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .back-link a:hover { text-decoration: underline; }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid #dae8f2;
+            color: #5b748b;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #1e6f9f;
+            text-decoration: none;
+        }
+
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 720px) {
+            .nav-links { display: none; }
+            .detail-header h1 { font-size: 1.7rem; }
+            .detail-header-top { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .feature-list { grid-template-columns: 1fr; }
+            .info-grid { grid-template-columns: 1fr; }
+            .detail-cta { padding: 32px 24px; }
+            .detail-cta h2 { font-size: 1.4rem; }
+            .cta-contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="../index.html" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="#1e6f9f" stroke="#0b2d4b" stroke-width="1.2"/>
+                </svg>
+                <span>AI Hearts</span>
+            </a>
+            <div class="nav-links">
+                <a href="../index.html">首页</a>
+                <a href="../weather.html">天气系统</a>
+                <a href="index.html" class="active">策略定制</a>
+                <a href="../index.html#contact">联系</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="breadcrumb">
+            <a href="../index.html">首页</a> / 
+            <a href="index.html">策略定制开发</a> / 
+            长桥证券
+        </div>
+
+        <header class="detail-header">
+            <div class="detail-header-top">
+                <div class="platform-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 20h16M6 16l4-8 4 5 4-9"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1>长桥证券策略定制开发</h1>
+                    <div class="category-tags">
+                        <span class="category-tag tag-stock">港美股</span>
+                    </div>
+                </div>
+            </div>
+            <p>长桥证券（Longbridge）是主流港美股券商，提供 Longbridge OpenAPI 用于量化交易。我们提供量化策略、条件单、自动下单、行情监控等各类策略定制开发，覆盖股票、期权。</p>
+        </header>
+
+        <section class="content-section">
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                </svg>
+                支持的策略类型
+            </h2>
+            <ul class="feature-list">
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    港美股量化选股、轮动策略
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    趋势跟踪、突破策略
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    期权策略（备兑、跨式、宽跨式）
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    条件单、止盈止损模型
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    行情监控、信号推送
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    自动下单、资金管理
+                </li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/>
+                </svg>
+                技术实现方式
+            </h2>
+            <p>使用 <strong>Longbridge OpenAPI</strong> 编写，支持 <strong>Python / Java / C# / Rust / Go</strong> 等多种语言。根据策略复杂度，可能涉及：</p>
+            <ul class="feature-list">
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Longbridge 行情接口（实时、历史）
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Longbridge 交易接口（下单、撤单、查询）
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    策略框架、事件驱动、定时任务
+                </li>
+                <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    服务器部署、自动运行
+                </li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                交付内容
+            </h2>
+            <ul class="deliverable-list">
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    <div><strong>策略源码</strong>：完整的策略代码，可直接运行</div>
+                </li>
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    <div><strong>依赖说明</strong>：所需库、环境配置说明</div>
+                </li>
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    <div><strong>回测报告</strong>：历史信号统计、胜率、盈亏比、最大回撤</div>
+                </li>
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    <div><strong>部署支持</strong>：协助配置 API 密钥、调试、挂载运行</div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                </svg>
+                价格 & 交付周期
+            </h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-label">简单策略/信号</div>
+                    <div class="info-value">¥ 99 起</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">多因子/期权策略</div>
+                    <div class="info-value">¥ 599 起</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">复杂量化系统</div>
+                    <div class="info-value">¥ 999 起</div>
+                </div>
+            </div>
+            <p style="margin-top: 18px; font-size: 0.92rem; color: #7a94ab;">
+                * 以上为参考区间，具体价格根据策略复杂度、数据需求、接口调用量评估。简单策略 1-3 天交付，复杂策略 5-10 天。
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+                常见问题
+            </h2>
+            <div class="faq-item">
+                <h4>需要开通 Longbridge OpenAPI 权限吗？</h4>
+                <p>需要。长桥证券账户可以申请 Longbridge OpenAPI 权限，具体门槛和费用以官方为准。</p>
+            </div>
+            <div class="faq-item">
+                <h4>支持美股期权吗？</h4>
+                <p>支持。Longbridge OpenAPI 提供港股、美股及期权的行情和交易接口。</p>
+            </div>
+            <div class="faq-item">
+                <h4>策略会不会泄露？</h4>
+                <p>源码直接交付给你，我们不留存。如需保密，可签署简易保密协议。</p>
+            </div>
+            <div class="faq-item">
+                <h4>能对接实盘自动交易吗？</h4>
+                <p>可以。策略编写完成后可以挂载到服务器上，实现自动交易。</p>
+            </div>
+        </section>
+
+        <div class="detail-cta">
+            <h2>需要长桥证券策略定制开发？</h2>
+            <p>把您的策略思路告诉我们，免费评估可行性与报价。</p>
+
+            <div class="cta-contact-grid">
+                <div class="cta-contact-block">
+                    <h3>🌏 国际客户</h3>
+                    <div class="cta-contact-item">
+                        <span class="cta-contact-label">Telegram</span>
+                        <a href="https://t.me/ai_hearts" target="_blank" rel="noopener">@ai_hearts</a>
+                    </div>
+                    <div class="cta-contact-item">
+                        <span class="cta-contact-label">Email</span>
+                        <a href="mailto:8786031@gmail.com">8786031@gmail.com</a>
+                    </div>
+                </div>
+                <div class="cta-contact-block">
+                    <h3>🇨🇳 中国大陆客户</h3>
+                    <div class="cta-contact-item">
+                        <span class="cta-contact-label">微信</span>
+                        <span>xinli93</span>
+                    </div>
+                    <div class="cta-contact-item">
+                        <span class="cta-contact-label">邮箱</span>
+                        <a href="mailto:xinli93@163.com">xinli93@163.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-actions">
+                <a href="https://t.me/ai_hearts" target="_blank" rel="noopener" class="btn">💬 Telegram 咨询</a>
+                <a href="../index.html#contact" class="btn btn-outline-light">查看全部联系方式</a>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html">← 返回全部策略定制</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 AI Hearts · aihearts.cn · 全球大宗商品天气监测 & 交易策略定制开发</p>
+            <p style="margin-top: 8px; font-size: 0.85rem;">
+                <a href="../index.html">首页</a> · 
+                <a href="../weather.html">天气系统</a> · 
+                <a href="index.html">策略定制</a> · 
+                <a href="https://t.me/ai_hearts" target="_blank" rel="noopener">Telegram</a> · 
+                <span>微信: xinli93</span>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
