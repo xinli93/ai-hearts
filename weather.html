@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- SEO 基础 -->
+    <title>全球大宗商品主产区天气监测系统 · AI Hearts</title>
+    <meta name="description" content="实时追踪美国、巴西、加拿大、泰国等大宗商品主产区天气，覆盖大豆、玉米、橡胶、棕榈油等品种，提供降水、温度、土壤湿度数据与异常预警。">
+    <meta name="keywords" content="大宗商品天气监测,大豆产区天气,玉米产区天气,橡胶产区天气,棕榈油产区天气,农产品天气">
+    <link rel="canonical" href="https://www.aihearts.cn/weather.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="全球大宗商品主产区天气监测系统 - AI Hearts">
+    <meta property="og:description" content="实时追踪美国、巴西、加拿大、泰国等主产区天气，覆盖大豆、玉米、橡胶、棕榈油。">
+    <meta property="og:url" content="https://www.aihearts.cn/weather.html">
+    <meta property="og:site_name" content="AI Hearts">
+    <meta property="og:image" content="https://www.aihearts.cn/images/weather-hero.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="全球大宗商品主产区天气监测系统 - AI Hearts">
+    <meta name="twitter:description" content="实时追踪全球主产区天气，覆盖大豆、玉米、橡胶、棕榈油。">
+
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "首页", "item": "https://www.aihearts.cn/"},
+        {"@type": "ListItem", "position": 2, "name": "天气监测系统"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "全球大宗商品主产区天气监测系统",
+      "description": "实时追踪美国、巴西、加拿大、泰国等大宗商品主产区天气，覆盖大豆、玉米、橡胶、棕榈油等品种。",
+      "brand": {"@type": "Brand", "name": "AI Hearts"},
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "CNY",
+        "price": "0",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f8fafc;
+            color: #0b1e33;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 12px rgba(0, 20, 30, 0.04);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+            color: #0b2d4b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo span { color: #1e6f9f; }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #1e6f9f; }
+        .nav-links a.active { color: #1e6f9f; font-weight: 600; }
+
+        /* 面包屑 */
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: #7a94ab;
+            padding: 32px 0 0;
+        }
+
+        .breadcrumb a {
+            color: #1e6f9f;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* Hero */
+        .page-header {
+            padding: 40px 0 48px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            color: #0b1e33;
+        }
+
+        .page-header h1 .highlight { color: #1e6f9f; }
+
+        .page-header p {
+            font-size: 1.15rem;
+            color: #4b637a;
+            max-width: 720px;
+            margin: 0 auto 20px;
+        }
+
+        .weather-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(30, 111, 159, 0.08);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1e6f9f;
+        }
+
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: #1e6f9f;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* 主截图 */
+        .hero-image {
+            margin: 24px 0 64px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(11, 45, 75, 0.12);
+            border: 1px solid #e1eef9;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 内容区块 */
+        .content-section {
+            padding: 64px 0;
+            border-bottom: 1px solid #eef4f9;
+        }
+
+        .content-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: #0b1e33;
+        }
+
+        .section-header p {
+            font-size: 1.05rem;
+            color: #4b637a;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 截图网格 */
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .screenshot-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #e8f0f7;
+            box-shadow: 0 8px 24px rgba(0, 20, 30, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(11, 45, 75, 0.1);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #eef4f9;
+        }
+
+        .screenshot-card-content {
+            padding: 20px 22px;
+        }
+
+        .screenshot-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #0b1e33;
+        }
+
+        .screenshot-card p {
+            font-size: 0.92rem;
+            color: #5b748b;
+            margin: 0;
+        }
+
+        /* 视频 */
+        .video-wrapper {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(11, 45, 75, 0.12);
+            border: 1px solid #e1eef9;
+            cursor: pointer;
+            background: #0b2d4b;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s;
+        }
+
+        .video-wrapper:hover img {
+            opacity: 0.85;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .video-wrapper:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .play-button svg {
+            width: 32px;
+            height: 32px;
+            color: #0b2d4b;
+            margin-left: 4px;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        /* 覆盖范围 */
+        .coverage-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 16px;
+        }
+
+        .coverage-block {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 26px;
+            border: 1px solid #e8f0f7;
+            box-shadow: 0 4px 16px rgba(0, 20, 30, 0.03);
+        }
+
+        .coverage-block h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #0b1e33;
+        }
+
+        .coverage-block h3 svg {
+            color: #1e6f9f;
+        }
+
+        .coverage-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .coverage-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.98rem;
+            color: #1e3b53;
+        }
+
+        .coverage-list li svg {
+            flex-shrink: 0;
+            color: #1e6f9f;
+        }
+
+        /* 价值说明 */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 24px;
+            border: 1px solid #e8f0f7;
+            text-align: center;
+        }
+
+        .value-icon {
+            width: 56px;
+            height: 56px;
+            background: #e2f0f9;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e6f9f;
+            margin: 0 auto 18px;
+        }
+
+        .value-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #0b1e33;
+        }
+
+        .value-card p {
+            font-size: 0.92rem;
+            color: #5b748b;
+            margin: 0;
+        }
+
+        /* CTA */
+        .detail-cta {
+            background: linear-gradient(135deg, #0b2d4b 0%, #1a4b6e 100%);
+            border-radius: 28px;
+            padding: 48px 40px;
+            text-align: center;
+            color: white;
+            margin: 64px 0;
+        }
+
+        .detail-cta h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .detail-cta > p {
+            opacity: 0.85;
+            margin-bottom: 32px;
+            font-size: 1.02rem;
+        }
+
+        .cta-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: left;
+            max-width: 620px;
+            margin: 0 auto 32px;
+        }
+
+        .cta-contact-block {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 20px 22px;
+        }
+
+        .cta-contact-block h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.95;
+        }
+
+        .cta-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .cta-contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .cta-contact-label {
+            opacity: 0.6;
+            font-size: 0.85rem;
+            min-width: 70px;
+        }
+
+        .cta-contact-item a {
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+            word-break: break-all;
+        }
+
+        .cta-contact-item a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .cta-contact-item span:not(.cta-contact-label) {
+            opacity: 0.9;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: #0b2d4b;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #f0f7ff;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.5);
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            color: white;
+        }
+
+        /* 返回链接 */
+        .back-link {
+            text-align: center;
+            padding: 8px 0 40px;
+        }
+
+        .back-link a {
+            color: #1e6f9f;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .back-link a:hover { text-decoration: underline; }
+
+        /* 页脚 */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid #dae8f2;
+            color: #5b748b;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #1e6f9f;
+            text-decoration: none;
+        }
+
+        footer a:hover { text-decoration: underline; }
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .screenshots-grid { grid-template-columns: 1fr; }
+            .coverage-grid { grid-template-columns: 1fr; }
+            .value-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 720px) {
+            .nav-links { display: none; }
+            .page-header h1 { font-size: 2rem; }
+            .section-header h2 { font-size: 1.6rem; }
+            .detail-cta { padding: 32px 24px; }
+            .detail-cta h2 { font-size: 1.4rem; }
+            .cta-contact-grid { grid-template-columns: 1fr; }
+            .play-button { width: 64px; height: 64px; }
+            .play-button svg { width: 24px; height: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航 -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="#1e6f9f" stroke="#0b2d4b" stroke-width="1.2"/>
+                </svg>
+                <span>AI Hearts</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="weather.html" class="active">天气系统</a>
+                <a href="strategy/index.html">策略定制</a>
+                <a href="index.html#contact">联系</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- 面包屑 -->
+        <div class="breadcrumb">
+            <a href="index.html">首页</a> / 天气监测系统
+        </div>
+
+        <!-- Hero -->
+        <header class="page-header">
+            <h1>全球大宗商品主产区<span class="highlight">天气监测</span></h1>
+            <p>实时追踪美国、巴西、加拿大、泰国等关键农业主产区气象数据，覆盖大豆、玉米、橡胶、棕榈油等品种，辅助基本面分析与交易决策。</p>
+            <div class="weather-indicator">
+                <span class="pulse-dot"></span> 实时更新 · 降水 / 温度 / 土壤湿度 / 异常预警
+            </div>
+        </header>
+
+        <!-- 主截图 -->
+        <div class="hero-image">
+            <img src="images/weather-hero.jpg" alt="全球大宗商品主产区天气监测系统总览界面" loading="lazy">
+        </div>
+
+    </div>
+
+    <!-- 核心功能截图 -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>核心功能</h2>
+                <p>从全球地图到产区细节，一屏掌握关键气象信息</p>
+            </div>
+            <div class="screenshots-grid">
+                <div class="screenshot-card">
+                    <img src="images/weather-map.jpg" alt="全球大宗商品产区地图" loading="lazy">
+                    <div class="screenshot-card-content">
+                        <h3>全球产区地图</h3>
+                        <p>一图查看全球主要农业与矿产区的分布与实时气象。</p>
+                    </div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="images/weather-rain.jpg" alt="降水与温度图层" loading="lazy">
+                    <div class="screenshot-card-content">
+                        <h3>降水 / 温度图层</h3>
+                        <p>切换降水、温度、土壤湿度等图层，直观对比不同产区。</p>
+                    </div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="images/weather-alert.jpg" alt="异常预警界面" loading="lazy">
+                    <div class="screenshot-card-content">
+                        <h3>异常预警</h3>
+                        <p>干旱、暴雨、霜冻等异常气象自动预警，不错过关键节点。</p>
+                    </div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="images/weather-compare.jpg" alt="历史同期对比" loading="lazy">
+                    <div class="screenshot-card-content">
+                        <h3>历史同期对比</h3>
+                        <p>与去年同期、5 年均值对比，判断气象异常程度。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 视频演示 -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>观看系统演示</h2>
+                <p>1 分钟了解系统的主要功能与操作方式</p>
+            </div>
+            <div class="video-wrapper" id="videoWrapper">
+                <img src="images/video-cover.jpg" alt="天气监测系统演示视频封面">
+                <div class="play-button">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 覆盖范围 -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>覆盖范围</h2>
+                <p>聚焦全球大宗商品核心产区</p>
+            </div>
+            <div class="coverage-grid">
+                <div class="coverage-block">
+                    <h3>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                        主产区
+                    </h3>
+                    <ul class="coverage-list">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 美国中西部玉米带、大豆区</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 巴西大豆、玉米产区</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 加拿大油菜籽、小麦产区</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 泰国橡胶、棕榈油产区</li>
+                    </ul>
+                </div>
+                <div class="coverage-block">
+                    <h3>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/>
+                        </svg>
+                        监测品种
+                    </h3>
+                    <ul class="coverage-list">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 大豆、玉米、小麦</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 橡胶、棕榈油</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 油菜籽、白糖</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 铁矿石、铜等矿产区</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 价值说明 -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>为什么需要天气监测</h2>
+                <p>天气是农产品供给的核心变量</p>
+            </div>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/>
+                        </svg>
+                    </div>
+                    <h3>辅助基本面分析</h3>
+                    <p>结合产区天气与历史数据，判断供需变化趋势。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                            <circle cx="12" cy="12" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>提前发现异常</h3>
+                    <p>干旱、暴雨、霜冻等异常气象自动预警，提前应对。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>把握交易节奏</h3>
+                    <p>结合天气窗口与市场情绪，辅助判断入场与离场时机。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="container">
+        <div class="detail-cta">
+            <h2>想了解更多或合作？</h2>
+            <p>欢迎联系我们，获取系统演示、数据接口或定制合作方案。</p>
+
+            <div class="cta-contact-grid">
+                <div class="cta-contact-block">
+                    <h3>🌏 国际客户</h3>
+                    <div class="cta-contact-item">
+                        <span class="cta-contact-label">Telegram</span>
+                        <a href="https://t.me/ai_hearts" target="_blank" rel="noopener">@ai_hearts</a>
+                    </div>
+                    <div class="cta-contact-item">
+                        <span class="cta-contact-label">Email</span>
+                        <a href="mailto:8786031@gmail.com">8786031@gmail.com</a>
+                    </div>
+                </div>
+                <div class="cta-contact-block">
+                    <h3>🇨🇳 中国大陆客户</h3>
+                    <div class="cta-contact-item">
+                        <span class="cta-contact-label">微信</span>
+                        <span>xinli93</span>
+                    </div>
+                    <div class="cta-contact-item">
+                        <span class="cta-contact-label">邮箱</span>
+                        <a href="mailto:xinli93@163.com">xinli93@163.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-actions">
+                <a href="https://t.me/ai_hearts" target="_blank" rel="noopener" class="btn">💬 Telegram 咨询</a>
+                <a href="index.html#contact" class="btn btn-outline-light">查看全部联系方式</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 返回 -->
+    <div class="back-link">
+        <a href="index.html">← 返回首页</a>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>© 2025 AI Hearts · aihearts.cn · 全球大宗商品天气监测 & 交易策略定制开发</p>
+            <p style="margin-top: 8px; font-size: 0.85rem;">
+                <a href="index.html">首页</a> · 
+                <a href="weather.html">天气系统</a> · 
+                <a href="strategy/index.html">策略定制</a> · 
+                <a href="https://t.me/ai_hearts" target="_blank" rel="noopener">Telegram</a> · 
+                <span>微信: xinli93</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- 视频延迟加载 -->
+    <script>
+        (function() {
+            const wrapper = document.getElementById('videoWrapper');
+            if (!wrapper) return;
+
+            wrapper.addEventListener('click', function() {
+                // 替换成你的视频嵌入地址
+                const videoUrl = 'https://www.bilibili.com/video/BV1N5eX6VEv9/';
+
+                wrapper.innerHTML = '<iframe src="' + videoUrl + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            });
+        })();
+    </script>
+
+</body>
+</html>
